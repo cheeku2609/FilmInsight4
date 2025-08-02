@@ -2,11 +2,12 @@
 
 ## Overview
 
-This is a Streamlit-based movie data analytics dashboard that provides comprehensive insights into movie ratings, runtime distributions, and genre analysis. The application processes movie datasets (including cast and crew information) to create interactive visualizations and statistical summaries. Users can filter data by release year, rating range, runtime, and genres to explore different aspects of movie data through dynamic charts and metrics.
+This is a Streamlit-based movie data analytics dashboard that provides comprehensive insights into movie ratings, genre analysis, and top movie rankings. The application processes movie datasets (including cast and crew information) to create interactive visualizations and statistical summaries. Users can filter data by release year, rating range, runtime, and genres to explore different aspects of movie data through dynamic charts and clean, readable movie listings.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+UI preferences: Clean, centered chart titles; prefer text-based movie listings over bar charts for top movies; remove lengthy movie sections to keep interface focused.
 
 ## System Architecture
 

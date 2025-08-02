@@ -259,33 +259,23 @@ def main():
     with tab4:
         st.markdown('<div class="section-header">🏆 Top Movies Analysis</div>', unsafe_allow_html=True)
         
-        col1, col2 = st.columns(2)
+        # Top rated movies
+        st.subheader("⭐ Highest Rated Movies")
+        top_rated = utils.get_top_rated_movies(filtered_df, 15)
         
-        with col1:
-            # Top rated movies
-            st.subheader("⭐ Highest Rated Movies")
-            top_rated = utils.get_top_rated_movies(filtered_df, 10)
-            fig_top_rated = viz.plot_top_movies_bar(top_rated, 'vote_average', 'Top Rated Movies')
-            st.plotly_chart(fig_top_rated, use_container_width=True)
-            
-            # Display table
-            st.dataframe(
-                top_rated[['title', 'vote_average', 'vote_count', 'release_year']].head(),
-                use_container_width=True
-            )
+        # Display movies with ratings in a clean format
+        for i, row in top_rated.head(10).iterrows():
+            col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
+            with col1:
+                st.write(f"**{row['title']}**")
+            with col2:
+                st.write(f"⭐ {row['vote_average']:.1f}")
+            with col3:
+                st.write(f"🗳️ {row['vote_count']:,}")
+            with col4:
+                st.write(f"📅 {int(row['release_year'])}")
         
-        with col2:
-            # Longest movies
-            st.subheader("⏱️ Longest Movies")
-            longest_movies = utils.get_longest_movies(filtered_df, 10)
-            fig_longest = viz.plot_top_movies_bar(longest_movies, 'runtime', 'Longest Movies (Runtime)')
-            st.plotly_chart(fig_longest, use_container_width=True)
-            
-            # Display table
-            st.dataframe(
-                longest_movies[['title', 'runtime', 'vote_average', 'release_year']].head(),
-                use_container_width=True
-            )
+        st.markdown("---")
         
         # Movies with runtime >= 180 minutes
         st.subheader("🎬 Epic Movies (Runtime ≥ 180 minutes)")
