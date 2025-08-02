@@ -65,14 +65,32 @@ st.markdown("""
 def load_data():
     """Load and process movie data"""
     try:
-        # Try to load from uploaded files or local files
-        movies_df = pd.read_csv('attached_assets/tmdb_5000_movies_1754127464330.csv')
-        credits_df = pd.read_csv('attached_assets/tmdb_5000_credits_1754127464329.csv')
+        # Try different file paths for deployment vs local
+        file_paths = [
+            ('attached_assets/tmdb_5000_movies_1754127464330.csv', 'attached_assets/tmdb_5000_credits_1754127464329.csv'),
+            ('tmdb_5000_movies.csv', 'tmdb_5000_credits.csv'),
+            ('data/tmdb_5000_movies.csv', 'data/tmdb_5000_credits.csv')
+        ]
+        
+        movies_df = None
+        credits_df = None
+        
+        for movies_path, credits_path in file_paths:
+            try:
+                movies_df = pd.read_csv(movies_path)
+                credits_df = pd.read_csv(credits_path)
+                break
+            except FileNotFoundError:
+                continue
+        
+        if movies_df is None or credits_df is None:
+            st.error("Dataset files not found. Please ensure the TMDB dataset files are uploaded to your repository.")
+            return None
         
         processor = DataProcessor()
         return processor.process_data(movies_df, credits_df)
-    except FileNotFoundError:
-        st.error("Dataset files not found. Please ensure the TMDB dataset files are available.")
+    except Exception as e:
+        st.error(f"Error loading data: {str(e)}")
         return None
 
 def main():
@@ -136,8 +154,13 @@ def main():
     # Display filter summary
     st.sidebar.markdown("---")
     st.sidebar.metric("Total Movies", len(filtered_df))
-    st.sidebar.metric("Average Rating", f"{filtered_df['vote_average'].mean():.2f}")
-    st.sidebar.metric("Total Revenue", f"${filtered_df['revenue'].sum():,.0f}")
+    
+    # Handle missing columns gracefully
+    if 'vote_average' in filtered_df.columns:
+        st.sidebar.metric("Average Rating", f"{filtered_df['vote_average'].mean():.2f}")
+    
+    if 'revenue' in filtered_df.columns:
+        st.sidebar.metric("Total Revenue", f"${filtered_df['revenue'].sum():,.0f}")
     
     # Main dashboard content
     if len(filtered_df) == 0:

@@ -13,8 +13,12 @@ class DataProcessor:
     def process_data(self, movies_df, credits_df):
         """Process and clean the movie dataset"""
         
-        # Rename columns before merging to avoid conflicts
-        movies_df = movies_df.rename(columns={'id': 'movie_id'})
+        # Handle different column naming conventions
+        # Ensure both datasets have 'id' or 'movie_id' for merging
+        if 'id' in movies_df.columns and 'movie_id' not in movies_df.columns:
+            movies_df = movies_df.rename(columns={'id': 'movie_id'})
+        if 'id' in credits_df.columns and 'movie_id' not in credits_df.columns:
+            credits_df = credits_df.rename(columns={'id': 'movie_id'})
         
         # Merge datasets on movie_id
         df = movies_df.merge(credits_df, on='movie_id', how='inner')
