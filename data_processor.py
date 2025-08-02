@@ -13,11 +13,18 @@ class DataProcessor:
     def process_data(self, movies_df, credits_df):
         """Process and clean the movie dataset"""
         
-        # Merge datasets
-        df = movies_df.merge(credits_df, left_on='id', right_on='movie_id', how='inner')
+        # Rename columns before merging to avoid conflicts
+        movies_df = movies_df.rename(columns={'id': 'movie_id'})
         
-        # Rename columns for clarity
-        df = df.rename(columns={'id': 'movie_id', 'title_x': 'title'})
+        # Merge datasets on movie_id
+        df = movies_df.merge(credits_df, on='movie_id', how='inner')
+        
+        # Handle title columns - movies dataset has 'title', credits has 'title' too
+        # Keep the title from movies dataset and remove the one from credits if it exists
+        if 'title_y' in df.columns:
+            df = df.drop(columns=['title_y'])
+        if 'title_x' in df.columns:
+            df = df.rename(columns={'title_x': 'title'})
         
         # Select relevant columns
         analysis_columns = [
