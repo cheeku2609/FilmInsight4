@@ -191,17 +191,9 @@ def main():
     with tab1:
         st.markdown('<div class="section-header">📊 Movie Dataset Overview</div>', unsafe_allow_html=True)
         
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            # Rating distribution
-            fig_rating = viz.plot_rating_distribution(filtered_df)
-            st.plotly_chart(fig_rating, use_container_width=True)
-        
-        with col2:
-            # Runtime distribution
-            fig_runtime = viz.plot_runtime_distribution(filtered_df)
-            st.plotly_chart(fig_runtime, use_container_width=True)
+        # Rating distribution (centered)
+        fig_rating = viz.plot_rating_distribution(filtered_df)
+        st.plotly_chart(fig_rating, use_container_width=True)
         
         # Year-wise analysis
         st.markdown('<div class="section-header">🗓️ Year-wise Analysis</div>', unsafe_allow_html=True)

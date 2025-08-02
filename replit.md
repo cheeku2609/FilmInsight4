@@ -7,7 +7,7 @@ This is a Streamlit-based movie data analytics dashboard that provides comprehen
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
-UI preferences: Clean, centered chart titles; prefer text-based movie listings over bar charts for top movies; remove lengthy movie sections to keep interface focused.
+UI preferences: Clean, centered chart titles; prefer text-based movie listings over bar charts for top movies; remove lengthy movie sections to keep interface focused; exclude runtime distribution chart from overview.
 
 ## System Architecture
 
