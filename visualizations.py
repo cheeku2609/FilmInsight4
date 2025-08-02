@@ -30,7 +30,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': 'Distribution of Movie Ratings',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             showlegend=False
         )
         
@@ -49,7 +54,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': 'Distribution of Movie Runtimes',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             showlegend=False
         )
         
@@ -71,7 +81,12 @@ class MovieVisualizations:
         fig.update_traces(line_color='#45b7d1', line_width=3)
         fig.update_layout(
             template=self.template,
-            title_x=0.5
+            title={
+                'text': 'Number of Movies Released Per Year',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            }
         )
         
         return fig
@@ -92,7 +107,12 @@ class MovieVisualizations:
         fig.update_traces(line_color='#f9ca24', line_width=3)
         fig.update_layout(
             template=self.template,
-            title_x=0.5
+            title={
+                'text': 'Average Movie Rating by Year',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            }
         )
         
         return fig
@@ -125,7 +145,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': 'Distribution of Movie Genres',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             yaxis={'categoryorder': 'total ascending'}
         )
         
@@ -171,7 +196,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': 'Average Rating by Genre',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             yaxis={'categoryorder': 'total ascending'}
         )
         
@@ -214,7 +244,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5
+            title={
+                'text': 'Genre Popularity Trends Over Time',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            }
         )
         
         return fig
@@ -243,8 +278,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title='Correlation Matrix of Movie Features',
-            title_x=0.5,
+            title={
+                'text': 'Correlation Matrix of Movie Features',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             width=600,
             height=500
         )
@@ -268,7 +307,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5
+            title={
+                'text': 'Runtime vs Rating',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            }
         )
         
         return fig
@@ -290,7 +334,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5
+            title={
+                'text': 'Vote Count vs Rating',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            }
         )
         
         return fig
@@ -312,7 +361,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': title,
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             yaxis={'categoryorder': 'total ascending'}
         )
         
@@ -333,7 +387,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': 'Movies with Runtime ≥ 180 Minutes',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             yaxis={'categoryorder': 'total ascending'}
         )
         
@@ -369,7 +428,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5
+            title={
+                'text': 'Budget vs Revenue',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            }
         )
         
         return fig
@@ -396,7 +460,12 @@ class MovieVisualizations:
         
         fig.update_layout(
             template=self.template,
-            title_x=0.5,
+            title={
+                'text': 'Most Profitable Movies',
+                'x': 0.5,
+                'xanchor': 'center',
+                'font_size': 16
+            },
             yaxis={'categoryorder': 'total ascending'}
         )
         

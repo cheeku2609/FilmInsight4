@@ -29,6 +29,7 @@ Preferred communication style: Simple, everyday language.
 - **Theme Consistency**: Dark template with custom color palette across all visualizations
 - **Chart Types**: Histograms, subplots, and interactive filtering capabilities
 - **Performance**: Efficient data processing with pandas and numpy for large datasets
+- **Title Styling**: Centrally aligned chart titles with consistent font sizing for professional appearance
 
 ### Data Model
 - **Core Entities**: Movies with attributes including ratings, runtime, release dates, budget, revenue, and popularity metrics
