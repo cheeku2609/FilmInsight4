@@ -221,9 +221,44 @@ def main():
             st.plotly_chart(fig_genre_dist, use_container_width=True)
         
         with col2:
-            # Average rating by genre
-            fig_genre_rating = viz.plot_genre_ratings(filtered_df)
-            st.plotly_chart(fig_genre_rating, use_container_width=True)
+            # Average rating by genre (text display)
+            st.subheader("📊 Average Rating by Genre")
+            if 'genre_list' in filtered_df.columns:
+                # Expand genres for analysis
+                genre_data = []
+                for _, row in filtered_df.iterrows():
+                    for genre in row['genre_list']:
+                        genre_data.append({
+                            'genre': genre,
+                            'vote_average': row['vote_average'],
+                            'vote_count': row['vote_count']
+                        })
+                
+                if genre_data:
+                    import pandas as pd
+                    genre_df = pd.DataFrame(genre_data)
+                    
+                    # Calculate weighted average ratings
+                    genre_ratings = genre_df.groupby('genre').agg({
+                        'vote_average': 'mean',
+                        'vote_count': 'sum'
+                    }).reset_index()
+                    
+                    # Filter genres with at least 10 movies
+                    genre_ratings = genre_ratings[genre_ratings['vote_count'] >= 10]
+                    genre_ratings = genre_ratings.sort_values('vote_average', ascending=False)
+                    
+                    # Display top genres with ratings
+                    for _, row in genre_ratings.head(10).iterrows():
+                        col_genre, col_rating = st.columns([2, 1])
+                        with col_genre:
+                            st.write(f"**{row['genre']}**")
+                        with col_rating:
+                            st.write(f"⭐ {row['vote_average']:.2f}")
+                else:
+                    st.write("No genre data available")
+            else:
+                st.write("Genre data not available")
         
         # Genre popularity over time
         fig_genre_time = viz.plot_genre_trends(filtered_df)
