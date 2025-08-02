@@ -94,14 +94,18 @@ def load_data():
         return None
 
 def main():
-    # Header
-    st.markdown('<h1 class="main-header">🎬 Movie Rating Analysis Dashboard</h1>', unsafe_allow_html=True)
-    st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #888;">A Data-Driven Exploration of the TMDB Movie Dataset</p>', unsafe_allow_html=True)
-    st.markdown('<p style="text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 2rem;">Created by Kritarth Karambelkar</p>', unsafe_allow_html=True)
-    
-    # Load data
-    df = load_data()
-    if df is None:
+    try:
+        # Header
+        st.markdown('<h1 class="main-header">🎬 Movie Rating Analysis Dashboard</h1>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center; font-size: 1.2rem; color: #888;">A Data-Driven Exploration of the TMDB Movie Dataset</p>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 2rem;">Created by Kritarth Karambelkar</p>', unsafe_allow_html=True)
+        
+        # Load data
+        df = load_data()
+        if df is None:
+            st.stop()
+    except Exception as e:
+        st.error(f"Application startup error: {str(e)}")
         st.stop()
     
     # Initialize visualization class
@@ -382,4 +386,8 @@ def main():
     )
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        st.error(f"Critical error: {str(e)}")
+        st.write("Please check the logs for more details.")
