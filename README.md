@@ -1,56 +1,47 @@
-# Movie Rating Analysis Dashboard
+# 🎬 FilmInsight – Interactive Movie Analytics Dashboard
 
-An interactive Streamlit dashboard for analyzing movie ratings, genres, and trends using the TMDB dataset.
+[![Streamlit App](https://img.shields.io/badge/Live%20App-Streamlit-brightgreen?style=for-the-badge&logo=streamlit)](https://filminsight.streamlit.app/)
 
-## Features
+FilmInsight is an **interactive dashboard** built with [Streamlit](https://streamlit.io/) to explore and visualize insights from the TMDB 5000 movie dataset.  
+It provides real-time filtering, trend analysis, and visual storytelling for movie data enthusiasts, analysts, and researchers.
 
-- **Overview Analysis**: Movie rating distributions and year-wise statistics
-- **Genre Analysis**: Genre popularity and rating trends
-- **Timeline Trends**: Movie production and rating patterns over time
-- **Top Movies**: Highest-rated movies with clean text displays
-- **Financial Analysis**: Budget vs revenue insights
+---
 
-## Files Required for Deployment
+## 📌 Features
 
-Make sure these files are in your repository root:
-- `app.py` - Main Streamlit application
-- `data_processor.py` - Data processing module
-- `visualizations.py` - Chart generation module
-- `utils.py` - Utility functions
-- `tmdb_5000_movies.csv` - Movie dataset
-- `tmdb_5000_credits.csv` - Credits dataset
-- `requirements.txt` - Python dependencies
+- **Multi-tab Interface** for seamless navigation between different types of analysis
+- **Interactive Filters** – filter movies by year, genre, rating, and runtime
+- **Dynamic Visualizations** using Plotly Express, Plotly Graph Objects, and Seaborn
+- **Data Processing** with Pandas and NumPy for efficient cleaning and transformation
+- **Modular Code Structure** for scalability and maintainability
+- **Custom Dark Theme** UI with HTML & CSS styling
+- **Deployed on Streamlit Community Cloud** for public access
 
-## Local Setup
+---
 
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
+## 🚀 Live Demo
 
-## Deployment on Streamlit Cloud
+🔗 **[Click here to try FilmInsight](https://filminsight.streamlit.app/)**
 
-1. **Push to GitHub:**
-   ```bash
-   git add .
-   git commit -m "Deploy movie dashboard"
-   git push origin main
-   ```
+---
 
-2. **Deploy on Streamlit Cloud:**
-   - Go to https://share.streamlit.io/
-   - Connect your GitHub repository
-   - Set main file as: `app.py`
-   - The app will automatically detect dependencies from `requirements.txt`
+## 🛠️ Tech Stack
 
-3. **Required Files (make sure these are in your repo root):**
-   - `app.py`, `data_processor.py`, `visualizations.py`, `utils.py`
-   - `tmdb_5000_movies.csv`, `tmdb_5000_credits.csv`
-   - `requirements.txt`, `.streamlit/config.toml`
+- **Frontend/UI**: Streamlit, HTML, CSS
+- **Data Processing**: Pandas, NumPy
+- **Visualization**: Plotly Express, Plotly Graph Objects, Seaborn
+- **Deployment**: Streamlit Community Cloud
+- **Version Control**: Git & GitHub
 
-**Troubleshooting:**
-- If deployment fails, check that CSV files are properly uploaded to GitHub
-- Ensure all Python files are in the repository root
-- Verify requirements.txt contains all dependencies
+---
 
-Created by Kritarth Karambelkar
+## 📂 Project Structure
+
+```plaintext
+FilmInsight/
+├── app.py                # Main Streamlit app entry point
+├── data_processor.py     # Data loading and cleaning functions
+├── visualizations.py     # All visualization functions
+├── utils.py              # Utility/helper functions
+├── data/                 # Dataset files (movies, credits)
+└── requirements.txt      # Python dependencies
